@@ -2,1273 +2,165 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Camargo Scaling – Agencia de Marketing Digital</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Camargo Scaling ayuda a negocios a aumentar sus ventas con marketing digital y embudos de venta efectivos." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Camargo Scaling</title>
 
   <style>
-    :root {
-      --bg: #050816;
-      --bg-alt: #0b1020;
-      --accent: #4f46e5;
-      --accent-soft: rgba(79, 70, 229, 0.12);
-      --accent-strong: rgba(79, 70, 229, 0.25);
-      --text: #f9fafb;
-      --muted: #9ca3af;
-      --card: #111827;
-      --border: #1f2937;
-      --danger: #ef4444;
-      --success: #22c55e;
-      --radius-lg: 18px;
-      --radius-md: 12px;
-      --radius-pill: 999px;
-      --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.75);
-      --shadow-sm: 0 8px 20px rgba(15, 23, 42, 0.55);
-      --transition: 220ms ease-out;
-    }
-
-    * {
-      box-sizing: border-box;
+    body {
       margin: 0;
       padding: 0;
-    }
-
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
-        "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #111827 0, #020617 55%, #000 100%);
-      color: var(--text);
-      line-height: 1.5;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    .page {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .container {
-      width: 100%;
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 20px 16px 64px;
+      background: #0d0d0d;
+      color: white;
+      font-family: Arial, Helvetica, sans-serif;
     }
 
     header {
-      position: sticky;
-      top: 0;
-      z-index: 40;
-      backdrop-filter: blur(16px);
-      background: linear-gradient(to bottom, rgba(2, 6, 23, 0.95), rgba(2, 6, 23, 0.7), transparent);
-      border-bottom: 1px solid rgba(15, 23, 42, 0.9);
+      text-align: center;
+      padding: 60px 20px;
     }
 
-    .nav {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 14px 16px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
+    header h1 {
+      font-size: 52px;
+      font-weight: 800;
+      margin-bottom: 10px;
     }
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .brand-logo {
-      width: 34px;
-      height: 34px;
-      border-radius: 12px;
-      background: radial-gradient(circle at 25% 0, #a855f7 0, #4f46e5 32%, #0ea5e9 80%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.4), var(--shadow-sm);
-      font-weight: 700;
-      font-size: 17px;
-    }
-
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .brand-title {
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      font-size: 14px;
-      text-transform: uppercase;
-    }
-
-    .brand-sub {
-      font-size: 11px;
-      color: var(--muted);
-    }
-
-    .nav-cta {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .pill {
-      border-radius: var(--radius-pill);
-      border: 1px solid rgba(148, 163, 184, 0.2);
-      padding: 6px 12px;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--muted);
-      background: rgba(15, 23, 42, 0.9);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .pill-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: var(--success);
-      box-shadow: 0 0 0 5px rgba(34, 197, 94, 0.25);
+    header p {
+      font-size: 22px;
+      opacity: 0.8;
+      margin-bottom: 20px;
     }
 
     .btn {
-      border-radius: var(--radius-pill);
-      border: 1px solid rgba(129, 140, 248, 0.7);
-      padding: 8px 18px;
-      font-size: 13px;
-      font-weight: 500;
-      background: radial-gradient(circle at top left, rgba(129, 140, 248, 0.3), rgba(37, 99, 235, 0.2));
-      color: #e5e7eb;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      cursor: pointer;
-      transition: transform var(--transition), box-shadow var(--transition), background var(--transition), border-color var(--transition);
-      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.75);
-    }
-
-    .btn:hover {
-      transform: translateY(-1px) translateZ(0);
-      border-color: rgba(191, 219, 254, 0.8);
-      background: radial-gradient(circle at top left, rgba(129, 140, 248, 0.5), rgba(37, 99, 235, 0.3));
-      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.9);
-    }
-
-    .btn-outline {
-      background: transparent;
-      border-color: rgba(148, 163, 184, 0.7);
-      box-shadow: none;
-    }
-
-    .btn-outline:hover {
-      background: rgba(15, 23, 42, 0.95);
-      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.8);
-    }
-
-    .hero {
-      display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2.6fr);
-      gap: 28px;
-      align-items: center;
-      padding-top: 32px;
-      padding-bottom: 40px;
-    }
-
-    .hero-left {
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-    }
-
-    .hero-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      align-self: flex-start;
-      background: rgba(15, 23, 42, 0.9);
-      border-radius: var(--radius-pill);
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      padding: 5px 10px 5px 5px;
-      font-size: 11px;
-      color: var(--muted);
-    }
-
-    .hero-eyebrow span {
-      font-size: 11px;
-    }
-
-    .hero-badge {
-      padding: 5px 10px;
-      border-radius: var(--radius-pill);
-      background: linear-gradient(to right, rgba(129, 140, 248, 0.25), rgba(59, 130, 246, 0.3));
-      font-size: 11px;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: #e5e7eb;
-    }
-
-    .hero-title {
-      font-size: clamp(32px, 5vw, 44px);
-      line-height: 1.05;
+      background: #ffffff;
+      color: #000;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-size: 20px;
       font-weight: 700;
-      letter-spacing: -0.04em;
-    }
-
-    .hero-title span {
-      background: linear-gradient(to right, #a855f7, #4f46e5, #0ea5e9);
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-
-    .hero-subtitle {
-      color: var(--muted);
-      font-size: 14px;
-      max-width: 480px;
-    }
-
-    .hero-highlight {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 10px;
-      margin-top: 4px;
-      border-radius: var(--radius-md);
-      background: rgba(15, 23, 42, 0.95);
-      border: 1px dashed rgba(148, 163, 184, 0.5);
-      font-size: 12px;
-      color: #e5e7eb;
-    }
-
-    .hero-cta-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 8px;
-      align-items: center;
-    }
-
-    .hero-metrics {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 10px;
-      font-size: 11px;
-      color: var(--muted);
-    }
-
-    .metric {
-      padding: 6px 10px;
-      border-radius: var(--radius-pill);
-      border: 1px solid rgba(31, 41, 55, 0.9);
-      background: rgba(15, 23, 42, 0.95);
-    }
-
-    .metric strong {
-      color: #e5e7eb;
-    }
-
-    .hero-right {
-      display: flex;
-      justify-content: center;
-    }
-
-    .hero-card {
-      background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.12), transparent 36%),
-                  radial-gradient(circle at 100% 15%, rgba(129, 140, 248, 0.12), transparent 45%),
-                  radial-gradient(circle at 50% 100%, rgba(248, 250, 252, 0.02), transparent 60%),
-                  rgba(15, 23, 42, 0.98);
-      border-radius: 26px;
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      box-shadow: var(--shadow-soft);
-      padding: 18px 18px 16px;
-      max-width: 360px;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at top, rgba(148, 163, 184, 0.15), transparent 55%);
-      mix-blend-mode: screen;
-      pointer-events: none;
-    }
-
-    .card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .card-title {
-      font-size: 14px;
-      font-weight: 600;
-    }
-
-    .card-chip {
-      font-size: 11px;
-      padding: 4px 10px;
-      border-radius: var(--radius-pill);
-      border: 1px solid rgba(148, 163, 184, 0.6);
-      color: var(--muted);
-      background: rgba(15, 23, 42, 0.9);
-    }
-
-    .card-body {
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
-      gap: 10px;
-    }
-
-    .stat-card {
-      border-radius: 16px;
-      border: 1px solid rgba(55, 65, 81, 0.95);
-      background: rgba(15, 23, 42, 0.98);
-      padding: 10px 10px;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .stat-label {
-      font-size: 11px;
-      color: var(--muted);
-    }
-
-    .stat-value {
-      font-size: 18px;
-      font-weight: 600;
-    }
-
-    .stat-pill {
-      font-size: 11px;
-      color: var(--success);
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      margin-top: 2px;
-    }
-
-    .stat-pill span {
-      font-size: 13px;
-    }
-
-    .mini-bar {
-      margin-top: 6px;
-      width: 100%;
-      height: 5px;
-      border-radius: 999px;
-      background: rgba(30, 64, 175, 0.7);
-      overflow: hidden;
-      position: relative;
-    }
-
-    .mini-bar-fill {
-      width: 72%;
-      height: 100%;
-      border-radius: 999px;
-      background: linear-gradient(to right, #22c55e, #a855f7);
-    }
-
-    .plan-summary {
-      border-radius: 16px;
-      border: 1px dashed rgba(82, 82, 91, 0.9);
-      padding: 10px 11px;
-      font-size: 11px;
-      color: var(--muted);
-      background: rgba(15, 23, 42, 0.96);
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .plan-summary strong {
-      color: #e5e7eb;
-    }
-
-    .plan-pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 4px;
-    }
-
-    .mini-pill {
-      border-radius: var(--radius-pill);
-      padding: 4px 8px;
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      font-size: 10px;
-      color: var(--muted);
-    }
-
-    .card-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 6px;
-      margin-top: 4px;
-    }
-
-    .avatar-row {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .avatar-stack {
-      display: flex;
-    }
-
-    .avatar {
-      width: 18px;
-      height: 18px;
-      border-radius: 999px;
-      border: 1px solid rgba(15, 23, 42, 0.95);
-      background: linear-gradient(135deg, #4f46e5, #22c55e);
-      font-size: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 10px rgba(15, 23, 42, 0.9);
-    }
-
-    .avatar + .avatar {
-      margin-left: -6px;
-    }
-
-    .avatar-text {
-      font-size: 11px;
-      color: var(--muted);
-    }
-
-    .card-mini-cta {
-      font-size: 11px;
-      padding: 6px 10px;
-      border-radius: var(--radius-pill);
-      background: rgba(37, 99, 235, 0.15);
-      border: 1px solid rgba(59, 130, 246, 0.7);
-      color: #e5e7eb;
-      display: inline-flex;
-      gap: 6px;
-      align-items: center;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 20px;
       cursor: pointer;
     }
 
-    section {
-      margin-top: 28px;
+    .section {
+      padding: 80px 20px;
+      max-width: 900px;
+      margin: auto;
+      text-align: center;
     }
 
-    .section-header {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 10px;
-      margin-bottom: 14px;
+    .section h2 {
+      font-size: 42px;
+      font-weight: 800;
+      margin-bottom: 20px;
     }
 
-    .section-title {
-      font-size: 18px;
-      font-weight: 600;
-    }
-
-    .section-subtitle {
-      font-size: 12px;
-      color: var(--muted);
-      max-width: 360px;
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .service-card {
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--border);
-      background: var(--bg-alt);
-      padding: 12px 12px 11px;
-      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.8);
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      font-size: 12px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .service-chip {
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--muted);
-    }
-
-    .service-name {
-      font-size: 14px;
-      font-weight: 600;
-    }
-
-    .service-body {
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    .service-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 4px;
-    }
-
-    .tag {
-      font-size: 10px;
-      padding: 4px 8px;
-      border-radius: var(--radius-pill);
-      background: rgba(15, 23, 42, 0.95);
-      border: 1px solid rgba(31, 41, 55, 0.9);
-      color: var(--muted);
-    }
-
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .pricing-card {
-      border-radius: var(--radius-lg);
-      border: 1px solid rgba(55, 65, 81, 0.95);
-      background: radial-gradient(circle at 0 0, rgba(129, 140, 248, 0.12), transparent 50%),
-                  var(--bg-alt);
-      padding: 14px 12px 13px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.9);
-    }
-
-    .pricing-card.recommended {
-      border-color: rgba(250, 204, 21, 0.9);
-      box-shadow: 0 20px 50px rgba(202, 138, 4, 0.5);
-      background:
-        radial-gradient(circle at 0 0, rgba(251, 191, 36, 0.2), transparent 50%),
-        radial-gradient(circle at 100% 100%, rgba(129, 140, 248, 0.18), transparent 45%),
-        var(--bg-alt);
-    }
-
-    .recommend-tag {
-      position: absolute;
-      top: 10px;
-      right: 12px;
-      font-size: 10px;
-      padding: 4px 7px;
-      border-radius: var(--radius-pill);
-      background: rgba(250, 204, 21, 0.12);
-      border: 1px solid rgba(250, 204, 21, 0.8);
-      color: #facc15;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-
-    .pricing-name {
-      font-size: 13px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: #e5e7eb;
-    }
-
-    .pricing-desc {
-      font-size: 11px;
-      color: var(--muted);
-    }
-
-    .pricing-amount {
+    .section p {
       font-size: 22px;
-      font-weight: 700;
+      line-height: 1.5;
+      opacity: 0.85;
     }
 
-    .pricing-amount span {
-      font-size: 11px;
-      font-weight: 400;
-      color: var(--muted);
-      margin-left: 4px;
-    }
-
-    .pricing-benefit {
-      font-size: 11px;
-      color: #a5b4fc;
-    }
-
-    .pricing-list {
-      margin-top: 4px;
-      font-size: 11px;
-      color: var(--muted);
-      list-style: none;
+    .plans {
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 40px;
+      margin-top: 40px;
     }
 
-    .pricing-list li::before {
-      content: "• ";
-      color: #4ade80;
+    .plan {
+      background: #1a1a1a;
+      padding: 40px;
+      border-radius: 16px;
+      border: 1px solid #333;
+      text-align: left;
     }
 
-    .pricing-cta {
-      margin-top: 6px;
-    }
-
-    .pricing-cta button {
-      width: 100%;
-      justify-content: center;
-      font-size: 12px;
-      padding-block: 7px;
-    }
-
-    .testimonials {
-      display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.6fr);
-      gap: 14px;
-    }
-
-    .test-card {
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--border);
-      background: var(--bg-alt);
-      padding: 12px;
-      font-size: 12px;
-      color: var(--muted);
-      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.85);
-    }
-
-    .test-card strong {
-      color: #e5e7eb;
-    }
-
-    .test-quote {
-      margin-top: 6px;
-      font-style: italic;
-    }
-
-    .test-meta {
-      margin-top: 8px;
-      font-size: 11px;
-      color: var(--muted);
-    }
-
-    .stats-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .stat-box {
-      border-radius: var(--radius-md);
-      border: 1px solid var(--border);
-      padding: 10px;
-      background: radial-gradient(circle at 0 0, rgba(52, 211, 153, 0.16), transparent 50%),
-                  var(--bg-alt);
-      flex: 1;
-      min-width: 130px;
-    }
-
-    .stat-box strong {
-      display: block;
-      font-size: 18px;
-    }
-
-    .stat-box span {
-      font-size: 11px;
-      color: var(--muted);
-    }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.6fr);
-      gap: 14px;
-      margin-top: 10px;
-    }
-
-    .contact-info {
-      font-size: 12px;
-      color: var(--muted);
-    }
-
-    .contact-info strong {
-      color: #e5e7eb;
-    }
-
-    .contact-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 8px;
-    }
-
-    .contact-badge {
-      padding: 6px 10px;
-      border-radius: var(--radius-pill);
-      background: rgba(15, 23, 42, 0.95);
-      border: 1px solid rgba(31, 41, 55, 0.9);
-      font-size: 11px;
-      color: var(--muted);
-    }
-
-    .contact-form {
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--border);
-      background: var(--bg-alt);
-      padding: 12px;
-      box-shadow: 0 14px 36px rgba(15, 23, 42, 0.9);
-    }
-
-    .field {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
+    .plan h3 {
+      font-size: 32px;
       margin-bottom: 10px;
-      font-size: 12px;
     }
 
-    label {
-      color: #d1d5db;
-      font-size: 12px;
-    }
-
-    input,
-    textarea,
-    select {
-      border-radius: 10px;
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      background: rgba(15, 23, 42, 0.95);
-      padding: 7px 9px;
-      font-size: 12px;
-      color: #e5e7eb;
-      outline: none;
-      transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
-      resize: vertical;
-      min-height: 38px;
-    }
-
-    textarea {
-      min-height: 70px;
-      max-height: 140px;
-    }
-
-    input:focus,
-    textarea:focus,
-    select:focus {
-      border-color: rgba(129, 140, 248, 0.85);
-      box-shadow: 0 0 0 1px rgba(129, 140, 248, 0.4);
-      background: rgba(15, 23, 42, 1);
-    }
-
-    .form-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      margin-top: 4px;
-    }
-
-    .form-note {
-      font-size: 10px;
-      color: var(--muted);
+    .plan p {
+      font-size: 20px;
+      opacity: 0.9;
+      line-height: 1.5;
     }
 
     footer {
-      border-top: 1px solid rgba(15, 23, 42, 1);
-      padding: 12px 16px 16px;
-      font-size: 11px;
-      color: var(--muted);
       text-align: center;
-      background: radial-gradient(circle at top, rgba(15, 23, 42, 1), rgba(2, 6, 23, 1));
-    }
-
-    footer a {
-      color: #a5b4fc;
-    }
-
-    @media (max-width: 900px) {
-      .hero {
-        grid-template-columns: minmax(0, 1fr);
-        padding-top: 24px;
-      }
-
-      .hero-right {
-        order: -1;
-      }
-
-      .services-grid,
-      .pricing-grid,
-      .testimonials,
-      .contact-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    @media (max-width: 640px) {
-      .nav {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .hero-cta-row {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .hero-cta-row .btn,
-      .hero-cta-row .btn-outline {
-        width: 100%;
-        justify-content: center;
-      }
-
-      .hero-card {
-        max-width: 100%;
-      }
+      padding: 40px;
+      opacity: 0.7;
+      font-size: 18px;
     }
   </style>
 </head>
+
 <body>
-<div class="page">
+
   <header>
-    <nav class="nav">
-      <div class="brand">
-        <div class="brand-logo">C</div>
-        <div class="brand-text">
-          <div class="brand-title">Camargo Scaling</div>
-          <div class="brand-sub">Escala sin miedo. Vende sin freno.</div>
-        </div>
-      </div>
-      <div class="nav-cta">
-        <div class="pill">
-          <span class="pill-dot"></span>
-          <span>Agenda abierta para nuevos clientes</span>
-        </div>
-        <button class="btn" onclick="scrollToSection('contacto')">
-          Agendar diagnóstico
-          <span>↗</span>
-        </button>
-      </div>
-    </nav>
+    <h1>Camargo Scaling</h1>
+    <p>Agencia enfocada en crecimiento real. Estrategias que convierten.</p>
+    <a class="btn" href="#planes">Ver Servicios</a>
   </header>
 
-  <main class="container">
-    <section class="hero" id="inicio">
-      <div class="hero-left">
-        <div class="hero-eyebrow">
-          <span class="hero-badge">Escala tu negocio sin complicarte</span>
-          <span>Marketing que convierte, no que decora</span>
-        </div>
+  <section class="section" id="planes">
+    <h2>Nuestros Servicios</h2>
+    <p>Diseñados para negocios que buscan crecer con estrategia, datos y sistemas reales — no con improvisación.</p>
 
-        <h1 class="hero-title">
-          Construimos sistemas que convierten
-          <span>seguidores en ventas reales.</span>
-        </h1>
+    <div class="plans">
 
-        <p class="hero-subtitle">
-          Camargo Scaling te ayuda a dejar de improvisar con tu marketing
-          y empezar a trabajar con embudos, anuncios y contenido medible.
+      <div class="plan">
+        <h3>Plan Básico</h3>
+        <p>
+          ✔ Gestión de campañas esenciales<br>
+          ✔ Optimización semanal<br>
+          ✔ Contenido estratégico básico<br>
+          ✔ Reporte mensual<br>
+          ✔ Ideal para comenzar a estructurar tu adquisición de clientes
         </p>
-
-        <div class="hero-highlight">
-          <span>✅ Ideal para pymes que ya venden pero quieren crecer en serio.</span>
-        </div>
-
-        <div class="hero-cta-row">
-          <button class="btn" onclick="scrollToSection('contacto')">
-            Agendar diagnóstico
-          </button>
-          <button class="btn btn-outline" onclick="scrollToSection('servicios')">
-            Ver qué podemos hacer por ti
-          </button>
-        </div>
-
-        <div class="hero-metrics">
-          <div class="metric">
-            <strong>+20%</strong> ventas promedio en 90 días
-          </div>
-          <div class="metric">
-            <strong>Embudos</strong> pensados para negocios de México y LATAM
-          </div>
-        </div>
       </div>
 
-      <div class="hero-right">
-        <div class="hero-card">
-          <div class="card-header">
-            <div>
-              <div class="card-title">Panel de crecimiento mensual</div>
-              <div style="font-size:11px;color:var(--muted);">
-                Vista previa de cómo trabajamos tus números.
-              </div>
-            </div>
-            <div class="card-chip">Simulación Camargo Scaling</div>
-          </div>
-
-          <div class="card-body">
-            <div class="stat-card">
-              <div class="stat-label">Ingresos estimados (mes)</div>
-              <div class="stat-value">$ 200,000 MXN</div>
-              <div class="stat-pill">
-                <span>▲</span>
-                +28% frente al mes anterior
-              </div>
-              <div class="mini-bar">
-                <div class="mini-bar-fill"></div>
-              </div>
-            </div>
-
-            <div class="stat-card">
-              <div class="stat-label">Retorno en anuncios (ROAS)</div>
-              <div class="stat-value">4.2x</div>
-              <div class="stat-pill">
-                <span>●</span>
-                Embudos optimizados
-              </div>
-              <div class="mini-bar">
-                <div class="mini-bar-fill" style="width:82%;"></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="plan-summary">
-            <div><strong>Plan recomendado:</strong> Pro – 3 meses.</div>
-            <div>Ideal para validar campañas, optimizar embudos y construir base de datos.</div>
-            <div class="plan-pill-row">
-              <div class="mini-pill">Gestión de anuncios</div>
-              <div class="mini-pill">Embudo completo</div>
-              <div class="mini-pill">Reportes semanales</div>
-            </div>
-          </div>
-
-          <div class="card-footer">
-            <div class="avatar-row">
-              <div class="avatar-stack">
-                <div class="avatar">P</div>
-                <div class="avatar" style="background:linear-gradient(135deg,#0ea5e9,#6366f1);">C</div>
-                <div class="avatar" style="background:linear-gradient(135deg,#22c55e,#f97316);">S</div>
-              </div>
-              <div class="avatar-text">
-                <strong style="color:#e5e7eb;">Pablo</strong> y equipo revisan tus métricas cada semana.
-              </div>
-            </div>
-            <div class="card-mini-cta" onclick="scrollToSection('contacto')">
-              Agendar diagnóstico
-              <span>→</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="servicios">
-      <div class="section-header">
-        <div>
-          <h2 class="section-title">¿Qué hace Camargo Scaling por tu negocio?</h2>
-          <p class="section-subtitle">
-            Pensado para negocios que ya venden, pero quieren orden, estrategia
-            y sistemas claros para escalar sin quemar dinero.
-          </p>
-        </div>
+      <div class="plan">
+        <h3>Plan Pro</h3>
+        <p>
+          ✔ Meta Ads + Google Ads<br>
+          ✔ Embudo completo (landing + automatizaciones)<br>
+          ✔ Contenido estratégico sólido<br>
+          ✔ Reporte quincenal<br>
+          ✔ Para negocios que buscan resultados reales en 90 días
+        </p>
       </div>
 
-      <div class="services-grid">
-        <div class="service-card">
-          <div class="service-chip">Servicio 01</div>
-          <div class="service-name">Gestión de anuncios pagados</div>
-          <p class="service-body">
-            Configuración, segmentación y optimización de campañas en Meta
-            (Facebook/Instagram) y Google Ads para generar tráfico de calidad
-            y leads listos para comprar.
-          </p>
-          <div class="service-tags">
-            <span class="tag">Meta Ads</span>
-            <span class="tag">Google Ads</span>
-            <span class="tag">Remarketing</span>
-          </div>
-        </div>
-
-        <div class="service-card">
-          <div class="service-chip">Servicio 02</div>
-          <div class="service-name">Embudos de venta y automatizaciones</div>
-          <p class="service-body">
-            Diseño del flujo completo desde el anuncio hasta la venta:
-            landing page, formularios, correos, WhatsApp y seguimiento para
-            no dejar dinero sobre la mesa.
-          </p>
-          <div class="service-tags">
-            <span class="tag">Landing pages</span>
-            <span class="tag">Email / WhatsApp</span>
-            <span class="tag">CRM básico</span>
-          </div>
-        </div>
-
-        <div class="service-card">
-          <div class="service-chip">Servicio 03</div>
-          <div class="service-name">Contenido y estrategias en redes</div>
-          <p class="service-body">
-            Calendario de contenido estratégico para atraer, educar y convertir,
-            alineado a tus campañas de pago y a la voz de tu marca.
-          </p>
-          <div class="service-tags">
-            <span class="tag">Estrategia redes</span>
-            <span class="tag">Reels / Shorts</span>
-            <span class="tag">Posicionamiento</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="precios">
-      <div class="section-header">
-        <div>
-          <h2 class="section-title">Planes pensados para crecer por etapas</h2>
-          <p class="section-subtitle">
-            Elige el nivel que mejor se adapta a tu negocio. Todos los planes incluyen
-            métricas claras, reportes y contacto directo.
-          </p>
-        </div>
-        <div class="section-subtitle">
-          Montos en <strong>MXN</strong>. Puedes adaptar estos precios según el cliente
-          y tipo de proyecto.
-        </div>
+      <div class="plan">
+        <h3>Plan Premium</h3>
+        <p>
+          ✔ Meta + Google + TikTok Ads<br>
+          ✔ Embudos avanzados y sistemas automatizados<br>
+          ✔ Contenido premium (UGC y video)<br>
+          ✔ Reporte semanal<br>
+          ✔ Para escalar agresivamente a nivel regional o nacional
+        </p>
       </div>
 
-      <div class="pricing-grid">
-        <article class="pricing-card">
-          <div class="pricing-name">Plan Básico</div>
-          <div class="pricing-desc">Ideal para empezar a tener presencia seria y medir resultados.</div>
-          <div class="pricing-amount">$ 9,000 <span>/ mes</span></div>
-          <div class="pricing-benefit">Hasta 1 canal de anuncios + redes sociales básicas.</div>
-          <ul class="pricing-list">
-            <li>Gestión de un canal (Meta Ads o Google Ads).</li>
-            <li>Hasta 2 campañas activas al mes.</li>
-            <li>Calendario simple de contenido (8–10 posts).</li>
-            <li>Reporte mensual con aprendizajes clave.</li>
-          </ul>
-          <div class="pricing-cta">
-            <button class="btn btn-outline" onclick="selectPlan('Básico')">
-              Agendar diagnóstico
-            </button>
-          </div>
-        </article>
+    </div>
+  </section>
 
-        <article class="pricing-card recommended">
-          <div class="recommend-tag">Más elegido</div>
-          <div class="pricing-name">Plan Pro</div>
-          <div class="pricing-desc">Para negocios que ya venden y quieren escalar con embudos claros.</div>
-          <div class="pricing-amount">$ 13,000 <span>/ mes</span></div>
-          <div class="pricing-benefit">Ideal para contratos de 3–6 meses.</div>
-          <ul class="pricing-list">
-            <li>Hasta 2 canales de anuncios (Meta + Google).</li>
-            <li>Embudo de venta configurado (landing + automatizaciones básicas).</li>
-            <li>Calendario de contenido estratégico (12–16 piezas).</li>
-            <li>Reporte quincenal + llamada mensual.</li>
-          </ul>
-          <div class="pricing-cta">
-            <button class="btn" onclick="selectPlan('Pro')">
-              Agendar diagnóstico
-            </button>
-          </div>
-        </article>
+  <section class="section">
+    <h2>Agenda tu Diagnóstico</h2>
+    <p>Cuéntame sobre tu negocio y te preparo un plan claro para escalarlo.</p>
 
-        <article class="pricing-card">
-          <div class="pricing-name">Plan Premium</div>
-          <div class="pricing-desc">Acompañamiento cercano, experimentación agresiva y escala.</div>
-          <div class="pricing-amount">$ 18,000 <span>/ mes</span></div>
-          <div class="pricing-benefit">Pensado para compromisos de 6–12 meses.</div>
-          <ul class="pricing-list">
-            <li>Multi canal (Meta, Google, TikTok dependiendo del caso).</li>
-            <li>Embudo avanzado + automatizaciones más robustas.</li>
-            <li>Contenido premium (UGC, video corto estratégico, etc.).</li>
-            <li>Reporte semanal + 2 llamadas al mes + soporte prioritario.</li>
-          </ul>
-          <div class="pricing-cta">
-            <button class="btn btn-outline" onclick="selectPlan('Premium')">
-              Agendar diagnóstico
-            </button>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section id="casos">
-      <div class="section-header">
-        <div>
-          <h2 class="section-title">Cómo se ve trabajar juntos</h2>
-          <p class="section-subtitle">
-            Incluso si estás empezando, el enfoque es siempre el mismo:
-            datos claros, comunicación directa y decisiones basadas en resultados.
-          </p>
-        </div>
-      </div>
-
-      <div class="testimonials">
-        <div class="test-card">
-          <strong>“Ya no estamos a ciegas con el marketing.”</strong>
-          <p class="test-quote">
-            "Antes subíamos publicaciones al azar. Ahora sabemos qué campañas
-            generan ventas, cuánto nos cuesta cada cliente y cuáles anuncios apagar.
-            Tener todo estructurado nos quitó muchísimo estrés."
-          </p>
-          <div class="test-meta">
-            – Testimonio tipo de pyme, sector servicios.
-          </div>
-        </div>
-
-        <div class="stats-row">
-          <div class="stat-box">
-            <strong>+20%</strong>
-            <span>Crecimiento de ventas promedio en los primeros 90 días
-              cuando el negocio ya tiene producto validado.</span>
-          </div>
-          <div class="stat-box">
-            <strong>3–6 meses</strong>
-            <span>Es el plazo ideal para ver resultados sólidos y tomar
-              decisiones de escala sin improvisar.</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contacto">
-      <div class="section-header">
-        <div>
-          <h2 class="section-title">Demos el primer paso</h2>
-          <p class="section-subtitle">
-            Cuéntame un poco sobre tu negocio y tus metas. Te respondo con una
-            propuesta concreta o te sugiero si aún no es momento de invertir.
-          </p>
-        </div>
-      </div>
-
-      <div class="contact-grid">
-        <div class="contact-info">
-          <p>
-            <strong>¿Qué pasa después de agendar tu diagnóstico?</strong><br />
-            1. Me cuentas en qué estás hoy y qué quieres lograr.<br />
-            2. Revisamos si realmente tiene sentido hacer marketing agresivo ya.<br />
-            3. Si sí, definimos un plan claro para crecer tus ventas.
-          </p>
-          <div class="contact-badges">
-            <div class="contact-badge">📧 camargoscaling@outlook.com</div>
-            <div class="contact-badge">📱 WhatsApp: 814 381 7299</div>
-            <div class="contact-badge">📸 Instagram: @camargo_scaling</div>
-            <div class="contact-badge">Negocios en México y LATAM</div>
-          </div>
-        </div>
-
-        <form class="contact-form" onsubmit="handleSubmit(event)">
-          <div class="field">
-            <label for="nombre">Nombre completo</label>
-            <input id="nombre" name="nombre" placeholder="Escribe tu nombre" required />
-          </div>
-
-          <div class="field">
-            <label for="email">Correo electrónico</label>
-            <input id="email" name="email" type="email" placeholder="tucorreo@ejemplo.com" required />
-          </div>
-
-          <div class="field">
-            <label for="negocio">Tipo de negocio</label>
-            <select id="negocio" name="negocio">
-              <option value="">Selecciona una opción</option>
-              <option>Restaurante / comida</option>
-              <option>Tienda física (ropa, belleza, etc.)</option>
-              <option>Servicio profesional (abogado, médico, consultor…)</option>
-              <option>Educación / cursos</option>
-              <option>Otro</option>
-            </select>
-          </div>
-
-          <div class="field">
-            <label for="facturacion">Facturación mensual aproximada</label>
-            <select id="facturacion" name="facturacion">
-              <option value="">Selecciona un rango</option>
-              <option>Menos de $50,000 MXN</option>
-              <option>$50,000 – $150,000 MXN</option>
-              <option>$150,000 – $300,000 MXN</option>
-              <option>Más de $300,000 MXN</option>
-            </select>
-          </div>
-
-          <div class="field">
-            <label for="mensaje">Cuéntame qué quieres lograr con el marketing</label>
-            <textarea id="mensaje" name="mensaje" placeholder="Ejemplo: quiero duplicar las citas/ventas en 6 meses, hoy vendo principalmente por..."></textarea>
-          </div>
-
-          <div class="form-footer">
-            <div class="form-note">
-              No es spam, ni mensajes genéricos. Te responde Pablo directamente.
-            </div>
-            <button class="btn" type="submit">
-              Agendar diagnóstico
-            </button>
-          </div>
-        </form>
-      </div>
-    </section>
-  </main>
+    <a class="btn" href="#contacto">Agendar</a>
+  </section>
 
   <footer>
-    © <span id="year"></span> Camargo Scaling. Escala sin miedo. Vende sin freno. ·
-    <a href="mailto:camargoscaling@outlook.com">camargoscaling@outlook.com</a>
+    © <span id="year"></span> Camargo Scaling — Todos los derechos reservados.
   </footer>
-</div>
 
-<script>
-  function scrollToSection(id) {
-    const el = document.getElementById(id);
-    if (!el) return;
-    el.scrollIntoView({ behavior: "smooth", block: "start" });
-  }
-
-  function selectPlan(plan) {
-    scrollToSection("contacto");
-    const mensaje = document.getElementById("mensaje");
-    if (mensaje && !mensaje.value.includes("Plan")) {
-      mensaje.value = `Me interesa el Plan ${plan} y me gustaría saber cómo podemos adaptarlo a mi negocio.\n\n` + mensaje.value;
-    }
-  }
-
-  function handleSubmit(event) {
-    event.preventDefault();
-    alert("Tu mensaje se ha 'enviado'. En producción aquí conectarías con tu email / CRM / WhatsApp.");
-  }
-
-  document.getElementById("year").textContent = new Date().getFullYear();
-</script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
