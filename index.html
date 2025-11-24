@@ -45,7 +45,7 @@
     }
 
     h1 {
-      font-size: clamp(40px, 5vw, 54px); /* MÁS GRANDE */
+      font-size: clamp(40px, 5vw, 54px);
       line-height: 1.05;
     }
 
@@ -118,7 +118,6 @@
       font-size: 18px;
     }
 
-    /* Si tienes logo en archivo, reemplaza el texto C por <img> */
     .brand-logo span {
       background: linear-gradient(to right, #a855f7, #4f46e5, #0ea5e9);
       -webkit-background-clip: text;
@@ -857,7 +856,7 @@
         <div>
           <h2 class="section-title">Planes pensados para diferentes etapas</h2>
           <p class="section-subtitle">
-            No mostramos precios aquí porque la inversión se adapta al tamaño y contexto de tu negocio. Lo importante es el nivel de acompañamiento.
+            La inversión se adapta al tamaño y contexto de tu negocio. Lo importante es el nivel de acompañamiento y sistema que construimos.
           </p>
         </div>
       </div>
@@ -882,7 +881,7 @@
           <div class="recommend-tag">Más elegido</div>
           <div class="pricing-name">Plan Pro</div>
           <div class="pricing-desc">
-            Para negocios que ya venden y quieren crecer 3–6 meses con un sistema completo.
+            Para negocios que ya venden y quieren crecer en 3–6 meses con un sistema completo.
           </div>
           <div class="pricing-amount">Inversión personalizada según metas y tamaño de operación.</div>
           <ul class="pricing-list">
@@ -902,7 +901,7 @@
           <div class="pricing-amount">Inversión definida en función del alcance y del nivel de escala.</div>
           <ul class="pricing-list">
             <li>Gestión multicanal (Meta, Google, TikTok según el caso).</li>
-            <li>Embudos avanzados y automatizaciones más profundas.</li>
+            <li>Embudos avanzados y automatizaciones profundas.</li>
             <li>Contenido premium (video, UGC estratégico).</li>
             <li>Reporte semanal + 2 llamadas al mes.</li>
             <li>Soporte prioritario y foco en experimentación.</li>
@@ -985,6 +984,11 @@
           </div>
 
           <div class="field">
+            <label for="telefono">Teléfono / WhatsApp</label>
+            <input id="telefono" name="telefono" type="tel" placeholder="Ej. +52 81 0000 0000" required />
+          </div>
+
+          <div class="field">
             <label for="negocio">Tipo de negocio</label>
             <select id="negocio" name="negocio">
               <option value="">Selecciona una opción</option>
@@ -1008,8 +1012,27 @@
           </div>
 
           <div class="field">
+            <label for="fecha">Fecha preferida para la llamada</label>
+            <input id="fecha" name="fecha" type="date" required />
+          </div>
+
+          <div class="field">
+            <label for="hora">Hora preferida (hora local)</label>
+            <select id="hora" name="hora" required>
+              <option value="">Selecciona una hora</option>
+              <option value="09:00">09:00</option>
+              <option value="10:00">10:00</option>
+              <option value="11:00">11:00</option>
+              <option value="16:00">16:00</option>
+              <option value="17:00">17:00</option>
+              <option value="18:00">18:00</option>
+              <option value="19:00">19:00</option>
+            </select>
+          </div>
+
+          <div class="field">
             <label for="mensaje">¿Qué quieres lograr con el marketing?</label>
-            <textarea id="mensaje" name="mensaje" placeholder="Ejemplo: quiero duplicar mis citas/ventas en los próximos 6 meses, hoy vendo principalmente por..."></textarea>
+            <textarea id="mensaje" name="mensaje" placeholder="Ej: quiero duplicar mis citas/ventas en los próximos 6 meses, hoy vendo principalmente por..."></textarea>
           </div>
 
           <div class="form-footer">
@@ -1032,6 +1055,9 @@
 </div>
 
 <script>
+  // Pega aquí tu webhook de Make:
+  const MAKE_WEBHOOK_URL = "https://hook.eu1.make.com/AQUI_VA_TU_WEBHOOK_DE_MAKE";
+
   function scrollToSection(id) {
     const el = document.getElementById(id);
     if (!el) return;
@@ -1040,15 +1066,58 @@
 
   document.getElementById("year").textContent = new Date().getFullYear();
 
-  // Por ahora solo mostramos alert al enviar. Después se puede conectar a Google Sheets o email.
+  async function sendToMake(payload) {
+    const res = await fetch(MAKE_WEBHOOK_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(payload),
+    });
+
+    if (!res.ok) {
+      throw new Error("Error al enviar al webhook");
+    }
+
+    // Make puede o no regresar JSON; evitamos que truene si no lo hace
+    try {
+      return await res.json();
+    } catch {
+      return {};
+    }
+  }
+
   document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("leadForm");
     if (!form) return;
 
-    form.addEventListener("submit", (e) => {
+    form.addEventListener("submit", async (e) => {
       e.preventDefault();
-      alert("Tu diagnóstico se ha registrado. Aquí podrías conectar Google Sheets, correo o WhatsApp.");
-      form.reset();
+
+      const submitButton = form.querySelector("button[type='submit']");
+      if (submitButton) submitButton.disabled = true;
+
+      const data = {
+        nombre: form.nombre.value,
+        email: form.email.value,
+        telefono: form.telefono.value,
+        negocio: form.negocio.value,
+        facturacion: form.facturacion.value,
+        fecha: form.fecha.value,   // YYYY-MM-DD
+        hora: form.hora.value,     // HH:MM
+        mensaje: form.mensaje.value
+      };
+
+      try {
+        await sendToMake(data);
+        alert("Listo. Tu solicitud de diagnóstico se registró. El sistema agendará y te confirmará por WhatsApp/correo.");
+        form.reset();
+      } catch (err) {
+        console.error(err);
+        alert("Hubo un error al enviar la información. Intenta de nuevo o escríbeme por WhatsApp.");
+      } finally {
+        if (submitButton) submitButton.disabled = false;
+      }
     });
   });
 </script>
